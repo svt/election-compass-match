@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "election-compass-match",
+  "version": "1.0.0",
+  "description": "The algorithm used by https://valkompassen.svt.se to get a percentage of how well two entities' political opinions are aligned.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "repository": "https://github.com/SVT/election-compass-match.git",
+  "contributors": [
+    "Rickard Andersson <rickard.andersson@svt.se>",
+    "Fredrik Stålnacke <fredrik.stalnacke@svt.se>",
+    "Emil Persson <emil.persson@svt.se>"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1",
+    "rollup": "^1.10.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "prepublish": "rollup --format=cjs --file=dist/index.cjs.js -- src/index.js && rollup --format=esm --file=dist/index.esm.js -- src/index.js"
+  }
+}
