@@ -66,11 +66,12 @@ import {
   match
 } from 'election-compass-match';
 
-const me = parseAnswers('D!;[0,3];A');
+const me = parseAnswers('D!;[0,3];A;0/5');
 const you = [
   new PropositionAnswer('A', { isImportant: false }),
   new PriorityAnswer([1, 2], { isImportant: false }),
-  new PropositionAnswer('B', { isImportant: true })
+  new PropositionAnswer('B', { isImportant: true }),
+  new RangeAnswer(0, 5, { isImportant: false })
 ];
 
 const percentageMatch = match(me, you);
