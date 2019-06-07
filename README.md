@@ -62,17 +62,20 @@ The answers can be parsed from their canonical encoding format, or constructed m
 import {
   PropositionAnswer,
   PriorityAnswer,
+  RangeAnswer,
+  skippedAnswer,
   parseAnswers,
   match
 } from 'election-compass-match';
 
-const me = parseAnswers('D!;[0,3];A;0/5');
+const me = parseAnswers('D!;[0,3];_;0/5;B');
 const you = [
   new PropositionAnswer('A', { isImportant: false }),
   new PriorityAnswer([1, 2], { isImportant: false }),
   new PropositionAnswer('B', { isImportant: true }),
-  new RangeAnswer(0, 5, { isImportant: false })
+  new RangeAnswer(0, 5, { isImportant: false }),
+  skippedAnswer
 ];
 
-const percentageMatch = match(me, you);
+const fractionalMatch = match(me, you); // 0.16753926701570682
 ```
