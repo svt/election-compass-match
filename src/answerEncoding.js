@@ -12,7 +12,7 @@ export function encodeAnswers(answers) {
 
       switch (answer.constructor) {
         case PropositionAnswer:
-          encodedAnswer = answer.likertAnswer;
+          encodedAnswer = answer.likertAlternative;
           break;
 
         case PriorityAnswer:
@@ -65,9 +65,9 @@ function parseAnswer(string) {
 
 function parsePropositionAnswer(string) {
   const isImportant = string[1] === '!';
-  const likertAnswer = string[0];
+  const likertAlternative = string[0];
 
-  return new PropositionAnswer(likertAnswer, { isImportant });
+  return new PropositionAnswer(likertAlternative, { isImportant });
 }
 
 function parsePriorityAnswer(string) {

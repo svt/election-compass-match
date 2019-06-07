@@ -74,6 +74,18 @@ describe('match', () => {
     );
   });
 
+  test('it should throw if the answers arrays are of different lengths', () => {
+    expect(() => {
+      parseMatch('A;B;C;D', 'A;B;C');
+    }).toThrow(/same length/i);
+  });
+
+  test('it should throw if two answers are of different kinds', () => {
+    expect(() => {
+      parseMatch('A;B', 'A;[1,2]');
+    }).toThrow(/proposition[^]*priority/i);
+  });
+
   function expectMatch(me, you, expectedPercent) {
     expect(parseMatch(me, you)).toBeCloseTo(expectedPercent, 4);
   }

@@ -15,19 +15,22 @@ const LIKERT_SCORING = {
   'DA':  0, 'DB':  3, 'DC':  8, 'DD': 11,
 };
 
+export const LikertAlternative = {
+  STRONGLY_DISAGREE: 'A',
+  SOMEWHAT_DISAGREE: 'B',
+  SOMEWHAT_AGREE: 'C',
+  STRONGLY_AGREE: 'D'
+};
+
 export class PropositionAnswer {
-  constructor(likertAnswer, { isImportant }) {
-    this.likertAnswer = likertAnswer;
-    this.maxScore = LIKERT_SCORING[likertAnswer + likertAnswer];
+  constructor(likertAlternative, { isImportant = false } = {}) {
+    this.likertAlternative = likertAlternative;
+    this.maxScore = LIKERT_SCORING[likertAlternative + likertAlternative];
     this.isImportant = isImportant;
   }
 
   match(other) {
-    if (other.isSkip) {
-      return 0.0;
-    }
-
-    return LIKERT_SCORING[this.likertAnswer + other.likertAnswer];
+    return LIKERT_SCORING[this.likertAlternative + other.likertAlternative];
   }
 }
 
@@ -36,16 +39,13 @@ const PRIORITY_ME_ANSWER_WEIGHT = 1.75;
 const PRIORITY_YOU_ANSWER_WEIGHT = 1;
 
 export class PriorityAnswer {
-  constructor(selectedAlternatives, { isImportant }) {
+  constructor(selectedAlternatives, { isImportant = false } = {}) {
     this.selectedAlternatives = selectedAlternatives;
     this.maxScore = PRIORITY_MAX_SCORE;
     this.isImportant = isImportant;
   }
 
   match(other) {
-    if (other.isSkip) {
-      return 0.0;
-    }
     const sharedSelections = this.selectedAlternatives.filter((n) =>
       other.selectedAlternatives.includes(n)
     );
@@ -73,7 +73,7 @@ const RANGE_SCORING = {
 };
 
 export class RangeAnswer {
-  constructor(selectedIndex, alternativesCount, { isImportant }) {
+  constructor(selectedIndex, alternativesCount, { isImportant = false } = {}) {
     this.selectedIndex = selectedIndex;
     this.alternativesCount = alternativesCount;
     this.scoring = RANGE_SCORING[this.alternativesCount];
@@ -89,10 +89,6 @@ export class RangeAnswer {
   }
 
   match(other) {
-    if (other.isSkip) {
-      return 0.0;
-    }
-
     return this.scoring[`${this.selectedIndex}${other.selectedIndex}`];
   }
 }

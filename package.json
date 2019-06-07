@@ -5,6 +5,7 @@
   "description": "The algorithm used by https://valkompassen.svt.se to get a percentage of how well two entities' political opinions are aligned.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "types": "election-compass-match.d.ts",
   "repository": "https://github.com/SVT/election-compass-match.git",
   "contributors": [
     "Rickard Andersson <rickard.andersson@svt.se>",
