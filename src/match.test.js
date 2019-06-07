@@ -1,4 +1,4 @@
-import match from './match';
+import { match } from './match';
 import { parseAnswers } from './answerEncoding';
 
 describe('match', () => {
@@ -79,6 +79,6 @@ describe('match', () => {
   }
 
   function parseMatch(me, you) {
-    return match(parseAnswers(me), parseAnswers(you));
+    return match(parseAnswers(me), parseAnswers(you)) * 100;
   }
 });

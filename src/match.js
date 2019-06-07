@@ -16,7 +16,7 @@ export function match(me, you) {
     return 0;
   }
 
-  return 100 * (score / maxScore);
+  return score / maxScore;
 }
 
 function scoreForPair([me, you]) {
