@@ -79,3 +79,7 @@ const you = [
 
 const fractionalMatch = match(me, you); // 0.16753926701570682
 ```
+
+#### Difference from 2018
+
+Besides the newly added `RangeAnswer` type, a slight adjustment has also been made to how strong of a penalty the _you_ side gets if it hasn't answered a question. In the 2018 algorithm, the penalty was a `5` unit increase in the `maxScore`, yielding a small decrease in the resulting quotient after the `score / maxScore` operation. In 2019 the penalty is `2.5` instead, which makes the penalty smaller.
