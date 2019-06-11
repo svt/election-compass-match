@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "election-compass-match",
   "version": "1.0.0",
   "description": "The algorithm used by https://valkompassen.svt.se to get a percentage of how well two entities' political opinions are aligned.",
