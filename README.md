@@ -85,6 +85,12 @@ const fractionalMatch = match(me, you); // 0.16753926701570682
 
 Besides the newly added `RangeAnswer` type, a slight adjustment has also been made to how strong of a penalty the _you_ side gets if it hasn't answered a question. In the 2018 algorithm, the penalty was a `5` unit increase in the `maxScore`, yielding a small decrease in the resulting quotient after the `score / maxScore` operation. In 2019 the penalty is `2.5` instead, which makes the penalty smaller.
 
+## License
+
+Copyright 2019 Sveriges Television AB.
+
+Election Compass Match is released under the [MIT License](LICENSE).
+
 ## Maintanance
 
 This code base should for now be seen as UNMAINTAINED, and provided as-is. However, we might still consider PR:s and issues if found.
