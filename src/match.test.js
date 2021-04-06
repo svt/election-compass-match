@@ -66,6 +66,8 @@ describe('match', () => {
     expectMatch('0/5', '4/5', 0.0);
     expectMatch('2/5', '_', 0.0);
     expect(parseMatch('3/5', '4/5')).toBeGreaterThan(parseMatch('2/5', '4/5'));
+    expectMatch('3/6', '3/6', 100.0);
+    expect(parseMatch('3/6', '4/6')).toBeGreaterThan(parseMatch('2/6', '4/6'));
   });
 
   test('important on everything is the same as important on nothing', () => {

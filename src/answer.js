@@ -61,34 +61,39 @@ export class PriorityAnswer {
   }
 }
 
-// prettier-ignore
-const RANGE_SCORING = {
-  5: {
-    '00': 16, '10':  8, '20':  0, '30':  0, '40':  0,
-    '01': 12, '11': 12, '21':  4, '31':  4, '41':  4,
-    '02':  8, '12':  8, '22':  8, '32':  8, '42':  8,
-    '03':  4, '13':  4, '23':  4, '33': 12, '43': 12,
-    '04':  0, '14':  0, '24':  0, '34':  8, '44': 16,
-  }
+function rangeScoring(me, you, N) {
+  function maskWeight(me, N) {
+    let fromMiddle = me - Math.ceil(N / 2);
+
+    if (fromMiddle < 0 || N % 2 == 1)
+      fromMiddle++;
+
+    return Math.ceil(N / 2) - Math.abs(fromMiddle) - 1;
+  };
+
+  const rawScore = (N - Math.abs(me - you) - 1) * (N - 1);
+  const mask = maskWeight(me, N) * (N - 1);
+
+  return rawScore - mask;
 };
 
 export class RangeAnswer {
   constructor(selectedIndex, alternativesCount, { isImportant = false } = {}) {
     this.selectedIndex = selectedIndex;
     this.alternativesCount = alternativesCount;
-    this.scoring = RANGE_SCORING[this.alternativesCount];
-    if (!this.scoring) {
-      throw new Error(
-        `Range questions with ${
-          this.alternativesCount
-        } alternatives are not supported.`
-      );
-    }
-    this.maxScore = this.scoring[`${selectedIndex}${selectedIndex}`];
+	if (this.alternativesCount <= 1) {
+		throw new Error(
+		  `Range questions with ${
+			this.alternativesCount
+		  } alternatives are not supported.`
+		);
+	  }
+    this.scoring = rangeScoring;
+    this.maxScore = this.scoring(selectedIndex, selectedIndex, this.alternativesCount);
     this.isImportant = isImportant;
   }
 
   match(other) {
-    return this.scoring[`${this.selectedIndex}${other.selectedIndex}`];
+    return this.scoring(this.selectedIndex, other.selectedIndex, this.alternativesCount);
   }
 }
