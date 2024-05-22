@@ -21,7 +21,7 @@ The matching has a _direction_. It's not commutative. We call the individual `me
 It works like this:
 
 1. For each answer pair `(me, you)`,
-   - Let `maxScore` be the _potential_ of a strong political consesus. This should correspond to a distinct statement by `me`.
+   - Let `maxScore` be the _potential_ of a strong political consensus. This should correspond to a distinct statement by `me`.
    - Let `score` be a value corresponding to the closeness of the two answers.
 2. Sum all the `maxScore` and `score` values for both answer sets.
 3. Divide `score` with `maxScore` to get the fractional match result.
@@ -91,7 +91,6 @@ Copyright 2019 Sveriges Television AB.
 
 Election Compass Match is released under the [MIT License](LICENSE).
 
-## Maintanance
+## Maintenance
 
 This code base should for now be seen as UNMAINTAINED, and provided as-is. However, we might still consider PR:s and issues if found.
-
