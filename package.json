@@ -1,25 +1,42 @@
 {
   "name": "election-compass-match",
-  "version": "1.0.0",
-  "description": "The algorithm used by https://valkompassen.svt.se to get a percentage of how well two entities' political opinions are aligned.",
+  "version": "2.0.0",
+  "description": "The algorithm used by https://valkompass.svt.se to get a percentage of how well two entities' political opinions are aligned.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "election-compass-match.d.ts",
+  "types": "dist/election-compass-match.d.ts",
   "repository": "https://github.com/SVT/election-compass-match.git",
+  "files": [
+    "dist"
+  ],
   "contributors": [
     "Rickard Andersson <rickard.andersson@svt.se>",
     "Fredrik Stålnacke <fredrik.stalnacke@svt.se>",
-    "Emil Persson <emil.persson@svt.se>"
+    "Emil Persson <emil.persson@svt.se>",
+    "Josef Andersson <josef.andersson@svt.se>",
+    "Martin Flodin <martin.flodin@svt.se>",
+    "Sara Andersson <sara.andersson@svt.se>"
   ],
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
-    "babel-jest": "^24.7.1",
-    "jest": "^24.7.1",
-    "rollup": "^1.10.1"
+    "@babel/core": "^7.23.9",
+    "@babel/plugin-transform-modules-commonjs": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.7",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5",
+    "rollup": "^4.12.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   },
   "scripts": {
     "test": "jest",
-    "prepublish": "rollup --format=cjs --file=dist/index.cjs.js -- src/index.js && rollup --format=esm --file=dist/index.esm.js -- src/index.js"
+    "prepublishOnly": "yarn build",
+    "prepack": "yarn build",
+    "build": "rollup -c"
   }
 }
