@@ -7,7 +7,7 @@
   "types": "dist/election-compass-match.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SVT/election-compass-match.git"
+    "url": "git+https://github.com/SVT/election-compass-match.git"
   },
   "files": [
     "dist"
