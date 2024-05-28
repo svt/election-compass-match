@@ -9,6 +9,10 @@
   "files": [
     "dist"
   ],
+  "author": {
+    "name": "Sveriges Television AB",
+    "url": "https://www.svt.se/opensource/"
+  },
   "contributors": [
     "Rickard Andersson <rickard.andersson@svt.se>",
     "Fredrik Stålnacke <fredrik.stalnacke@svt.se>",
