@@ -1,3 +1,5 @@
+![Banner image](./docs/readme-banner.jpg)
+
 # Election Compass Match
 
 The algorithm used by [SVT's Valkompass (election compass)](https://valkompass.svt.se) to get a percentage of how well two entities' political opinions are aligned.
