@@ -1,6 +1,6 @@
 {
   "name": "election-compass-match",
-  "version": "2.0.1-rc.0",
+  "version": "2.0.1",
   "description": "The algorithm used by https://valkompass.svt.se to get a percentage of how well two entities' political opinions are aligned.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
